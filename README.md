@@ -1,0 +1,11 @@
+# TECHNOLOGIES
+- Kotlin
+- MVVM architecture
+- Dependency injection
+- Repository pattern
+- Retrofit
+- Quotable API
+- Room database
+- Coroutines
+- Data binding
+- Navigation component
