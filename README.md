@@ -9,3 +9,4 @@
 - Coroutines
 - Data binding
 - Navigation component
+- Lottie animations
