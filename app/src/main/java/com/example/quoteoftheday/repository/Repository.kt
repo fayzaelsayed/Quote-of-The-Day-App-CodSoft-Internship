@@ -8,6 +8,7 @@ import com.example.quoteoftheday.data.remote.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlin.math.log
 
 class Repository @Inject constructor(
     private val apiService: ApiService,
@@ -15,6 +16,7 @@ class Repository @Inject constructor(
 ) {
     val _showProgress = MutableLiveData(true)
     suspend fun getQuoteFromServerToDatabase() {
+        try {
             withContext(Dispatchers.IO) {
                 val response =
                     apiService.getQuoteOfTheDay()
@@ -33,7 +35,7 @@ class Repository @Inject constructor(
                                 length = quote.length,
                                 dateAdded = quote.dateAdded,
                                 dateModified = quote.dateModified
-                                )
+                            )
                             quoteDatabaseDao.insertQuoteToDatabase(entity)
                             _showProgress.postValue(false)
                         }
@@ -43,5 +45,9 @@ class Repository @Inject constructor(
                     _showProgress.postValue(false)
                 }
             }
+        }catch (e:Exception){
+            Log.i("error", "getQuoteFromServerToDatabase: $e")
+        }
+
     }
 }

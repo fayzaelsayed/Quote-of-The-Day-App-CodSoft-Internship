@@ -37,7 +37,7 @@ class SplashFragment : Fragment() {
             delay(200)
             binding.lottieAnimationView.visibility = View.VISIBLE
             binding.lottieAnimationView.startAnimation(lottieAnimation)
-            delay(4000)
+            delay(6000)
             findNavController().navigate(R.id.action_splashFragment_to_mainFragment)
         }
         return binding.root
